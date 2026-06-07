@@ -31,6 +31,13 @@ jobs:
       env:
         VITE_GOOGLE_SHEET_WEBAPP_URL: ${{ secrets.VITE_GOOGLE_SHEET_WEBAPP_URL }}
 
+    - name: Verify Build Output
+      run: |
+        echo "=== Build output contents ==="
+        ls -la frontend/dist/public/ || echo "ERROR: frontend/dist/public/ does not exist!"
+        echo "=== Total files ==="
+        find frontend/dist/public/ -type f | wc -l
+
     - name: FTP Deploy to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:

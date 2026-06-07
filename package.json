@@ -1,0 +1,19 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=frontend",
+    "dev": "PORT=5173 BASE_PATH=/ npm run dev --workspace=frontend",
+    "package": "npm run build && cd frontend/dist/public && zip -r ../../../deploy.zip ."
+  },
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "prettier": "^3.8.3",
+    "typescript": "~5.9.3"
+  }
+}

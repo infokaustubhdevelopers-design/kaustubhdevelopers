@@ -1,0 +1,44 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main  # Triggers when code is pushed to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Install Linux Native Binaries (platform-specific optional deps fix)
+      run: npm install --no-save @rollup/rollup-linux-x64-gnu lightningcss-linux-x64-gnu
+
+    - name: Build Application
+      run: npm run build
+      env:
+        VITE_GOOGLE_SHEET_WEBAPP_URL: ${{ secrets.VITE_GOOGLE_SHEET_WEBAPP_URL }}
+
+    - name: FTP Deploy to Hostinger
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: frontend/dist/public/
+        server-dir: public_html/
+        # This action syncs only modified files, so it is extremely fast and won't re-upload the 45MB video unless it changes.
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**

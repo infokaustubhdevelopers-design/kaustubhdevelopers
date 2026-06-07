@@ -19,10 +19,12 @@ jobs:
         node-version: 20
 
     - name: Install Dependencies
-      run: npm install
+      run: |
+        rm -f package-lock.json
+        npm install
 
-    - name: Install Linux Native Binaries (platform-specific optional deps fix)
-      run: npm install --no-save @rollup/rollup-linux-x64-gnu lightningcss-linux-x64-gnu
+    - name: Install Linux Native Binaries
+      run: npm install --no-save @rollup/rollup-linux-x64-gnu lightningcss-linux-x64-gnu @tailwindcss/oxide-linux-x64-gnu
 
     - name: Build Application
       run: npm run build

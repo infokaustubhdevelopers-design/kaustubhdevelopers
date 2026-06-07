@@ -45,6 +45,11 @@ jobs:
           set ftp:ssl-allow no;
           set net:timeout 30;
           open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
+          echo '=== FTP ROOT STRUCTURE ===';
+          ls;
           mirror --reverse --delete --verbose --parallel=5 frontend/dist/public/ public_html/;
+          echo '=== AFTER UPLOAD: public_html contents ===';
+          cd public_html;
+          ls;
           quit
         "

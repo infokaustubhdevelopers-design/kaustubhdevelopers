@@ -51,7 +51,7 @@ export default function Contact({ form, isSubmitting, onSubmit }) {
                 </div>
                 <div>
                   <p className="font-bold uppercase text-sm text-gray-400">Email</p>
-                  <p className="text-white"> kuch</p>
+                  <p className="text-white">Info.kaustubhdevelopers@gmail.com</p>
                 </div>
               </div>
             </div>

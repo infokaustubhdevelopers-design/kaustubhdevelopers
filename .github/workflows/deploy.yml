@@ -44,7 +44,16 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       run: |
-        echo "=== Starting FTP upload ==="
+        echo "=== Testing FTP connection and path ==="
+        # Upload a single test file with verbose output to see where it goes
+        echo "test-from-actions" > /tmp/actions-test.txt
+        curl -v --insecure \
+             --ftp-create-dirs \
+             -T /tmp/actions-test.txt \
+             "ftp://$FTP_SERVER/public_html/actions-test.txt" \
+             --user "$FTP_USERNAME:$FTP_PASSWORD" 2>&1 | head -50
+
+        echo "=== Starting full FTP upload ==="
         cd frontend/dist/public
         find . -type f | sort | while IFS= read -r file; do
           filepath="${file#./}"

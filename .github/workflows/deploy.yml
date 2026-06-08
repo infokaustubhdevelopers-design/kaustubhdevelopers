@@ -44,16 +44,7 @@ jobs:
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       run: |
-        echo "=== Testing FTP connection and path ==="
-        # Upload a single test file with verbose output to see where it goes
-        echo "test-from-actions" > /tmp/actions-test.txt
-        curl -v --insecure \
-             --ftp-create-dirs \
-             -T /tmp/actions-test.txt \
-             "ftp://$FTP_SERVER/public_html/actions-test.txt" \
-             --user "$FTP_USERNAME:$FTP_PASSWORD" 2>&1 | head -50
-
-        echo "=== Starting full FTP upload ==="
+        echo "=== Uploading files to Hostinger (FTP root = public_html) ==="
         cd frontend/dist/public
         find . -type f | sort | while IFS= read -r file; do
           filepath="${file#./}"
@@ -61,7 +52,7 @@ jobs:
           curl --ftp-create-dirs \
                --insecure \
                -T "$file" \
-               "ftp://$FTP_SERVER/public_html/$filepath" \
+               "ftp://$FTP_SERVER/$filepath" \
                --user "$FTP_USERNAME:$FTP_PASSWORD" \
                --silent --show-error --fail
         done

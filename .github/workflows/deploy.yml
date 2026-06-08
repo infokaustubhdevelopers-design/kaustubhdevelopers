@@ -44,15 +44,8 @@ jobs:
         lftp -c "
           set ftp:ssl-allow no;
           set net:timeout 30;
+          set cmd:fail-exit false;
           open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-          echo '=== Cleaning stray files from FTP root ==='
-          rm -f .htaccess || true;
-          rm -f index.html || true;
-          rm -f favicon.svg || true;
-          rm -f opengraph.jpg || true;
-          rm -f robots.txt || true;
-          rm -rf assets || true;
-          echo '=== Uploading to public_html/ ===';
           mirror --reverse --delete --verbose --parallel=5 frontend/dist/public/ public_html/;
           quit
         "

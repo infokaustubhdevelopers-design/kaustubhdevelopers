@@ -50,7 +50,7 @@ jobs:
           filepath="${file#./}"
           echo "Uploading: $filepath"
           curl --ftp-create-dirs \
-               --ssl-reqd false \
+               --insecure \
                -T "$file" \
                "ftp://$FTP_SERVER/public_html/$filepath" \
                --user "$FTP_USERNAME:$FTP_PASSWORD" \

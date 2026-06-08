@@ -1,4 +1,4 @@
-name: Deploy to Hostinger
+name: Build and Deploy to Hostinger
 
 on:
   push:
@@ -33,27 +33,17 @@ jobs:
 
     - name: Verify Build Output
       run: |
-        echo "=== Build output contents ==="
-        ls -la frontend/dist/public/ || echo "ERROR: frontend/dist/public/ does not exist!"
-        echo "=== Total files ==="
+        echo "=== Build output ==="
+        ls -la frontend/dist/public/
         find frontend/dist/public/ -type f | wc -l
 
-    - name: Deploy to Hostinger via FTP
-      env:
-        FTP_SERVER: ${{ secrets.FTP_SERVER }}
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+    - name: Push built files to deploy branch
       run: |
-        echo "=== Uploading files to Hostinger (FTP root = public_html) ==="
         cd frontend/dist/public
-        find . -type f | sort | while IFS= read -r file; do
-          filepath="${file#./}"
-          echo "Uploading: $filepath"
-          curl --ftp-create-dirs \
-               --insecure \
-               -T "$file" \
-               "ftp://$FTP_SERVER/$filepath" \
-               --user "$FTP_USERNAME:$FTP_PASSWORD" \
-               --silent --show-error --fail
-        done
-        echo "=== Upload complete! ==="
+        git init
+        git config user.email "actions@github.com"
+        git config user.name "GitHub Actions"
+        git add -A
+        git commit -m "Deploy build - $(date '+%Y-%m-%d %H:%M:%S')"
+        git push -f https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git HEAD:deploy
+        echo "=== Pushed to deploy branch successfully! ==="

@@ -1,0 +1,13 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180" fill="#151F2E"/>
+  <!-- Glow effect -->
+  <text x="90" y="130" font-family="Georgia, serif" font-size="115" font-weight="700" text-anchor="middle" fill="#C99528" opacity="0.25" filter="url(#glow)">K</text>
+  <!-- Main K letter -->
+  <text x="90" y="130" font-family="Georgia, serif" font-size="115" font-weight="700" text-anchor="middle" fill="#C99528">K</text>
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+</svg>

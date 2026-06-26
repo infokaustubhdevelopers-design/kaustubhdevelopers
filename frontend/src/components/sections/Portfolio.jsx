@@ -73,6 +73,11 @@ export default function Portfolio({
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Disclaimer */}
+        <p className="mt-8 text-xs text-muted-foreground/60 text-center tracking-wide">
+          <span className="text-primary font-bold">*</span> Some project images are architectural renders or representations. Actual appearance of the completed structure may vary.
+        </p>
       </div>
     </section>
   );

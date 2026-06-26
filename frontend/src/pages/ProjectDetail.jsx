@@ -8,11 +8,15 @@ import logoPath from "@assets/Untitled_design_1780384072114.png";
 import sinhasApartmentImg from "@assets/k_001_1780486725934.jpeg";
 import saiKripaImg from "@assets/WhatsApp_Image_2026-04-17_at_3.58.38_PM_(2)_-_Copy_1780486911077.jpeg";
 import nardadeshwarImg from "@assets/WhatsApp_Image_2026-06-03_at_17.14.27_1780487110137.jpeg";
+import emeraldGardenImg from "@assets/emerald_garden.png";
+import theSunSquareImg from "@assets/the_sun_square.jpg";
 
 const projectImages = {
   "sai-kripa": saiKripaImg,
   "sinhas-apartment": sinhasApartmentImg,
   "nardadeshwar-heights": nardadeshwarImg,
+  "emerald-garden": emeraldGardenImg,
+  "the-sun-square": theSunSquareImg,
 };
 
 const API_BASE = import.meta.env.VITE_API_URL || "";

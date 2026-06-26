@@ -1,6 +1,8 @@
 import sinhasApartmentImg from "@assets/k_001_1780486725934.jpeg";
 import saiKripaImg from "@assets/WhatsApp_Image_2026-04-17_at_3.58.38_PM_(2)_-_Copy_1780486911077.jpeg";
 import nardadeshwarImg from "@assets/WhatsApp_Image_2026-06-03_at_17.14.27_1780487110137.jpeg";
+import emeraldGardenImg from "@assets/emerald_garden.png";
+import theSunSquareImg from "@assets/the_sun_square.jpg";
 
 export const projects = [
   {
@@ -27,7 +29,7 @@ export const projects = [
     slug: "the-sun-square",
     title: "The Sun Square",
     category: "Residential",
-    image: "",
+    image: theSunSquareImg,
     location: "Kankarbagh Main Road, Beside Gravity Mall, Patna, 800020",
     year: "2025",
     status: "Completed",
@@ -46,7 +48,7 @@ export const projects = [
     slug: "emerald-garden",
     title: "Emerald Garden",
     category: "Residential",
-    image: "",
+    image: emeraldGardenImg,
     location: "Patna, Bihar",
     year: "2024",
     status: "Completed",

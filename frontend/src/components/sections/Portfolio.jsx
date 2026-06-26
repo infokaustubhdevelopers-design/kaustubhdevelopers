@@ -18,17 +18,16 @@ export default function Portfolio({
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold uppercase">Featured Projects</h2>
           </div>
-          
+
           <div className="flex flex-wrap gap-2">
             {["All", "Commercial", "Residential"].map(cat => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-6 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-200 border-2 ${
-                  filter === cat 
-                    ? "border-primary bg-primary text-primary-foreground" 
+                className={`px-6 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-200 border-2 ${filter === cat
+                    ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-transparent text-muted-foreground hover:bg-white hover:text-black hover:border-white"
-                }`}
+                  }`}
                 data-testid={`button-filter-${cat.toLowerCase()}`}
               >
                 {cat}
@@ -37,8 +36,8 @@ export default function Portfolio({
           </div>
         </div>
 
-        <motion.div 
-          layout 
+        <motion.div
+          layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <AnimatePresence mode="popLayout">
@@ -55,8 +54,8 @@ export default function Portfolio({
                 onClick={() => navigate(`/project/${project.slug}`)}
               >
                 {projectImages[project.slug] || project.image ? (
-                  <img 
-                    src={projectImages[project.slug] || project.image} 
+                  <img
+                    src={projectImages[project.slug] || project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -64,7 +63,7 @@ export default function Portfolio({
                   <div className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900" />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
-                
+
                 <div className="absolute bottom-0 left-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 text-[#ffffff] font-bold text-[30px]">
                   <span className="text-primary font-bold tracking-widest uppercase block text-[14px] mb-1">{project.category}</span>
                   <h3 className="font-serif font-bold text-white uppercase text-[30px]">{project.title}</h3>
@@ -75,7 +74,7 @@ export default function Portfolio({
         </motion.div>
 
         {/* Disclaimer */}
-        <p className="mt-8 text-xs text-muted-foreground/60 text-center tracking-wide">
+        <p className="mt-8 text-sm text-muted-foreground/70 text-left tracking-wide font-medium">
           <span className="text-primary font-bold">*</span> Some project images are architectural renders or representations. Actual appearance of the completed structure may vary.
         </p>
       </div>

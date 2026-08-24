@@ -28,7 +28,7 @@ export default function ProjectDetail() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const localProject = projects.find((p) => p.slug === slug);
+    const localProject = projects.find((p) => p.slug === slug && !p.hidden);
     setProject(localProject || null);
     setIsLoading(false);
   }, [slug]);

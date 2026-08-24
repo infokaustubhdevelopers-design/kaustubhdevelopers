@@ -49,7 +49,7 @@ export default function App() {
   const [filter, setFilter] = useState("All");
   const { toast } = useToast();
   
-  const [projectsList, setProjectsList] = useState(projects);
+  const [projectsList, setProjectsList] = useState(projects.filter(p => !p.hidden));
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {

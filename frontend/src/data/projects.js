@@ -86,6 +86,7 @@ export const projects = [
     slug: "sinhas-apartment",
     title: "Sinha's Apartment",
     category: "Residential",
+    hidden: true, // Hidden from website display
     image: sinhasApartmentImg,
     location: "Patna, Bihar",
     year: "2025",

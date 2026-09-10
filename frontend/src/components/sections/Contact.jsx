@@ -42,7 +42,7 @@ export default function Contact({ form, isSubmitting, onSubmit }) {
                 </div>
                 <div>
                   <p className="font-bold uppercase text-sm text-gray-400">Phone</p>
-                  <p className="text-white">(+91) 9304351968</p>
+                  <p className="text-white">(+91) 8538985054</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
